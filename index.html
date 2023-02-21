@@ -5,15 +5,722 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <style>
+        .gray-background {
+            background-color: var(--color-concrete);
+        }
+        .m_header_preference {
+          text-align: center;
+          padding: 3rem 0 1.5rem;
+
+          & h1 {
+            font-family: var(--font-light);
+            font-size: 3rem;
+            margin-top: .3rem;
+          }
+
+          @nest & .heading-3 {
+            font-family: var(--font-demi-bold);
+          }
+        }
+        div.m_container_email {
+
+          & input,
+          & textarea,
+          & select {
+
+            &:focus {
+              outline: .2rem solid var(--color-outline);
+              outline-offset: .2rem;
+            }
+          }
+
+          @media (--viewport-medium) {
+            padding: 0 15rem;
+            flex-direction: row !important;
+            align-items: center;
+          }
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+
+          & label {
+            font-family: var(--font-demi-bold);
+            font-size: 1.4rem;
+            line-height: 1;
+            margin-bottom: 0;
+          }
+
+          & input {
+            width: 100%;
+          }
+
+          @nest & input {
+            width: 100%;
+          }
+
+          @nest & button {
+            margin: auto;
+          }
+
+          @nest & .spacer {
+            flex-grow: 1;
+          }
+
+          @nest & p {
+            margin-bottom: 4rem;
+          }
+
+          @nest & .preference-copy {
+            text-align: center;
+            width: 100%;
+
+            &.bodycopy-1 {
+              margin: 0 auto 4rem;
+            }
+          }
+        }
+        .m_white_card {
+          background-color: white;
+          margin: 1rem 2rem 0;
+
+          @media (--viewport-medium) {
+            margin: 1rem auto 0;
+            width: 701px;
+          }
+        }
+        .m_inner_card {
+          padding: 3rem 2.8rem;
+
+          & .m_checkbox {
+
+            &:not(:checked) {
+
+              & + label {
+                position: relative;
+                vertical-align: middle;
+
+                &:before {
+                  left: 1rem;
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(-50%, -50%);
+                }
+              }
+            }
+
+            &:checked {
+
+              & ~ label {
+
+               & i {
+                  position: absolute;
+                  top: 50%;
+                  transform: translate(0%, -50%);
+                }
+              }
+            }
+
+            & ~ label {
+              display: flex;
+              flex-wrap: wrap;
+              position: relative;
+              margin-bottom: 10px;
+            }
+          }
+
+          & .mi-checkmark-box {
+
+            & + .label-name {
+              margin-left: 2.6rem;
+              margin-top: .2rem;
+            }
+          }
+
+          @media (--viewport-medium) {
+            padding: 3rem 4.9rem;
+          }
+
+          @nest & .m_title_card {
+            display: block;
+            font-family: var(--font-demi-bold);
+            margin-bottom: 2rem;
+          }
+
+          & .form_change_email {
+            margin-top: 21px;
+
+            & button {
+              display: block;
+
+              @media (--viewport-medium) {
+                display: inline-block;
+              }
+            }
+
+            & .m_form_group {
+              max-width: 343px;
+
+              & label {
+                line-height: 1;
+                margin-bottom: 0;
+              }
+            }
+          }
+
+          &.manage-subscription {
+            margin: auto;
+            max-width: 530px;
+
+            & label {
+              margin-bottom: 1.1rem;
+            }
+
+            & .m_container_email {
+              padding: 0;
+
+              & > .m_form_group {
+                margin-bottom: 2rem;
+
+                & .error-block {
+                  display: none;
+                }
+
+                &.error {
+                  margin-bottom: .4rem;
+
+                  & .error-block {
+                    display: block;
+                  }
+                }
+              }
+
+              & input {
+
+                margin-bottom: 0.3rem;
+                margin-top: 0;
+              }
+
+              @media (--viewport-medium) {
+                margin-right: 1rem;
+                width: 100%;
+              }
+            }
+
+            & .button-submit {
+
+              @media (--viewport-medium) {
+                margin-bottom: 0;
+                margin-left: 10px;
+                margin-top: -21px;
+
+                &.is-disabled {
+                  margin-left: 1rem;
+                }
+              }
+            }
+          }
+
+          & .m_preference_text {
+            font-size: 1.4rem;
+            line-height: 1.4;
+            margin: 1.9rem 0 2.5rem
+          }
+
+          & .m_copy-card {
+            margin: 0 0 2rem;
+          }
+
+          & .mi-edit:before {
+            font-size: 1.3rem;
+            position: relative;
+            top: 2px;
+          }
+
+          & .email-bold {
+            display: inline-block;
+            margin-right: .7rem;
+            margin-top: 1.5rem;
+          }
+        }
+        .m_cta,
+        a.m_cta,
+        button.m_cta {
+          border-radius: 1.95rem;
+          color: var(--color-white);
+          display: inline-block;
+          font-family: var(--font-bold);
+          font-size: 1.4rem;
+          line-height: normal;
+          max-width: 255px;
+          padding: .9rem 2.4rem .9rem;
+          position: relative;
+          text-align: center;
+          width: 100%;
+
+          @media (--viewport-medium) {
+            max-width: none;
+            width: auto;
+          }
+
+          @nest .m_header  & {
+            font-size: 1.2rem;
+          }
+
+          @nest section .rzf-gry[class*='palette-'] & {
+            color: var(--color-white);
+          }
+
+          /* exceptions for main nav */
+          @nest .m_header .language-nav & {
+            font-size: 1.4rem;
+          }
+
+          @nest .m_header .owners-nav & {
+            font-size: 1.4rem;
+          }
+
+          /* exceptions for footer */
+          @nest .m_footer .stay-informed & {
+            font-size: 1.2rem;
+
+            @media (--viewport-large) {
+              font-size: 1.4rem;
+            }
+          }
+
+          /* exceptions for BaP CTAs */
+          @nest .bap-flex-buttons & {
+            margin: 0;
+            white-space: nowrap;
+
+            @media (--viewport-large) {
+              margin: 0 5px;
+            }
+
+            &:first-of-type {
+              margin: 0 0 10px;
+
+              @media (--viewport-medium) {
+                margin: 0;
+              }
+
+              @media (--viewport-large) {
+                margin: 0 5px;
+              }
+            }
+          }
+
+          &.is-primary,
+          &.is-secondary,
+          &.is-text {
+
+            &:focus {
+              outline: .2rem solid var(--color-outline);
+              outline-offset: .2rem;
+            }
+          }
+
+          &.is-text {
+            border: none;
+            border-radius: 0;
+            padding: 0;
+            white-space: nowrap;
+
+            @nest & .text-wrapper {
+              left: 50%;
+              padding-bottom: .3rem;
+              position: relative;
+              top: 50%;
+              transform: translate(-50%, 0);
+            }
+
+            &.is-hover,
+            &:hover {
+             text-decoration: underline;
+            }
+
+            &.is-pointer {
+
+              &:after {
+                content: "\e902";
+                font-family: 'm-icon' !important;
+                font-size: 1.4rem;
+                left: 100%;
+                top: 1px;
+              }
+            }
+          }
+
+          &.is-sm {
+            font-size: 1.2rem;
+            padding: .6rem 1.6rem;
+            letter-spacing: .7px;
+          }
+
+          &:after {
+            border-radius: 1.95rem;
+            bottom: 0;
+            content: '';
+            display: block;
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+
+          & .text-wrapper {
+            display: block;
+            font-family: var(--font-bold);
+            font-size: 1.4rem;
+            line-height: normal;
+            margin: 0 auto;
+            overflow: hidden;
+            white-space: nowrap;
+            width: 100%;
+          }
+
+          &.is-on-dark {
+
+            &.is-primary {
+              background-color: var(--color-primary);
+
+              &:after {
+                border: 2px solid var(--color-white);
+              }
+
+              &:focus {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+              }
+
+              &.is-hover,
+              &:hover {
+                background-color: var(--color-white);
+                color: var(--color-primary);
+              }
+
+              &.is-alt {
+                background-color: var(--color-white);
+                color: var(--color-primary);
+
+                &:after {
+                  border: 2px solid var(--color-primary);
+                }
+
+                &:focus {
+                  background-color: var(--color-primary);
+                  color: var(--color-white);
+                }
+
+                &.is-hover,
+                &:hover {
+                  background-color: var(--color-primary);
+                  color: var(--color-white);
+
+                  &:after {
+                    border: 2px solid var(--color-white);
+                  }
+                }
+              }
+            }
+
+            &.is-secondary {
+              background-color: var(--color-secondary);
+
+              &:after {
+                border: 2px solid var(--color-white);
+              }
+
+              &:focus {
+                background-color: var(--color-secondary);
+                color: var(--color-white);
+              }
+
+              &:hover:focus {
+                color: var(--color-white);
+              }
+
+              &.is-hover,
+              &:hover {
+                color: var(--color-secondary);
+              }
+
+              &.is-alt {
+                background-color: var(--color-white);
+                color: var(--color-secondary);
+
+                &:after {
+                  border: 2px solid var(--color-secondary);
+                }
+
+                &.is-hover,
+                &:hover {
+                  background-color: var(--color-secondary);
+                  color: var(--color-white);
+
+                  &:after {
+                    color: var(--color-white);
+                  }
+                }
+              }
+            }
+
+            &.is-hover,
+            &:hover,
+            &:focus {
+              background-color: var(--color-white);
+            }
+
+            &.is-text {
+              color: var(--color-malibu);
+
+              &.is-hover,
+              &:hover,
+              &:focus {
+                background-color: transparent;
+              }
+            }
+          }
+
+          &.is-on-light {
+
+            &.is-primary {
+              background-color: var(--color-primary);
+
+              &:focus {
+                background-color: var(--color-primary);
+                color: var(--color-white);
+
+                &:after {
+                  border: 2px solid var(--color-primary);
+                }
+              }
+
+              &.is-hover,
+              &:hover {
+                background-color: var(--color-white);
+                color: var(--color-primary);
+
+                &:after {
+                  border: 2px solid var(--color-primary);
+                }
+              }
+
+              &.is-alt {
+                background-color: var(--color-white);
+                color: var(--color-primary);
+
+                &:after {
+                  border: 2px solid var(--color-primary);
+                }
+
+                &:focus {
+                  background-color: var(--color-white);
+                  color: var(--color-primary);
+                  outline: .2rem solid var(--color-outline);
+                  outline-offset: .2rem;
+
+                  &:after {
+                    border: 2px solid var(--color-primary);
+                  }
+                }
+
+                &.is-hover,
+                &:hover {
+                  background-color: var(--color-primary);
+                  color: var(--color-white);
+
+                  &:after {
+                    border: none;
+                  }
+                }
+              }
+            }
+
+            &.is-secondary {
+              background-color: var(--color-secondary);
+
+              &:focus {
+                background-color: var(--color-secondary);
+                color: var(--color-white);
+
+                &:after {
+                  border: 2px solid var(--color-secondary);
+                }
+              }
+
+              &.is-hover,
+              &:hover {
+                background-color: var(--color-white);
+                color: var(--color-secondary);
+
+                &:after {
+                  border: 2px solid var(--color-secondary);
+                }
+              }
+
+              &.is-alt {
+                background-color: var(--color-white);
+                color: var(--color-secondary);
+
+                &:after {
+                  border: 2px solid var(--color-secondary);
+                }
+
+                &:focus {
+                  background-color: var(--color-white);
+                  color: var(--color-secondary);
+
+                  &:after {
+                    border: 2px solid var(--color-secondary);
+                  }
+                }
+
+                &.is-hover,
+                &:hover {
+                  background-color: var(--color-secondary);
+                  color: var(--color-white);
+
+                  &:after {
+                    border: none;
+                  }
+                }
+              }
+            }
+
+            &.is-hover,
+            &:hover,
+            &:focus {
+              background-color: var(--color-white);
+            }
+
+            &.is-text {
+              color: var(--color-lochmara);
+
+              &.is-hover,
+              &:hover,
+              &:focus {
+                background-color: transparent;
+              }
+            }
+          }
+
+          &.is-disabled,
+          &.is-primary.is-disabled,
+          &.is-secondary.is-disabled {
+            background-color: var(--color-silver);
+            color: var(--color-white);
+
+            &.is-hover,
+            &:hover,
+            &:focus {
+              background-color: var(--color-silver);
+              color: var(--color-white);
+
+              &:after {
+                border: none;
+              }
+            }
+          }
+
+          &.animation_bounceIn {
+            animation: animation_bounceIn 500ms;
+          }
+
+          &.animation_dropIn {
+            animation: animation_dropIn 500ms;
+          }
+
+          @media (--viewport-medium) {
+            margin: 5px;
+          }
+
+          &.is-dark {
+
+            &.is-primary {
+              background-color: var(--color-prussian-blue);
+
+              &:focus {
+                background-color: var(--color-prussian-blue);
+                color: var(--color-white);
+
+                &:after {
+                  border: 2px solid var(--color-prussian-blue);
+                }
+              }
+
+              &.is-hover,
+              &:hover {
+                background-color: var(--color-white);
+                color: var(--color-prussian-blue);
+
+                &:after {
+                  border: 2px solid var(--color-prussian-blue);
+                }
+              }
+
+              &.is-alt {
+                background-color: var(--color-white);
+                color: var(--color-prussian-blue);
+
+                &:after {
+                  border: 2px solid var(--color-prussian-blue);
+                }
+
+                &:focus {
+                  background-color: var(--color-white);
+                  color: var(--color-prussian-blue);
+                  outline: .2rem solid var(--color-outline);
+                  outline-offset: .2rem;
+
+                  &:after {
+                    border: 2px solid var(--color-prussian-blue);
+                  }
+                }
+
+                &.is-hover,
+                &:hover {
+                  background-color: var(--color-prussian-blue);
+                  color: var(--color-white);
+
+                  &:after {
+                    border: none;
+                  }
+                }
+              }
+            }
+          }
+        }        
+    </style>    
     <title>Consent form</title>
 </head>
 <body>
-    <form method="POST" action="https://function-a12247n1.us01.treasuredata-apps.com/submit_honda">
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+    <div class="gray-background">
+        <div class="m_header_preference">
+            <span aria-hidden="true" class="m_text heading-3 is-on-light">Honda Automobiles </span>
+            <h1 aria-label="Honda Automobiles Email Preferences" class="m_text heading-1 is-on-light">Email Preferences</h1>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+        <div class="m_white_card">
+            <div class="m_inner_card manage-subscription">
+                <div class="m_container_email">
+                    <p class="preference-copy bodycopy-1">To manage your email preferences or unsubscribe,  please enter your email address below.</p>
+                </div>
+                <form method="POST" action="https://function-a12247n1.us01.treasuredata-apps.com/submit_honda">
+                    <div class="m_container_email">
+                        <label for="email">Email address</label>
+                        <div class="spacer"></div>
+                    </div>
+                    <div class="m_container_email">
+                        <div class="m_form_group">        
+                            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+                        </div>
+                        <button type="submit" class="m_cta is-on-light  is-secondary button-submit">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
