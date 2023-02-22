@@ -4,16 +4,41 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <title>Consent form</title>
+    <!-- <link rel="stylesheet" href="styles.css" type="text/css"> -->
+    <link rel="stylesheet" href="https://vipulsinghtd.github.io/hondaepc/styles.css" type="text/css">
+    <title>Email Form</title>
+
 </head>
 <body>
-    <form method="POST" action="https://function-a12247n1.us01.treasuredata-apps.com/submit_acura">
-        <div class="form-group">
-            <label for="email">Email address</label>
-            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" name="email" placeholder="Enter email">
+    <div class="form-wrapper">
+        <div class="gray-background">
+
+            <div class="m_header_preference">
+                <span aria-hidden="true" class="m_text heading-3 is-on-light">Acura Automobiles </span>
+                <h1 aria-label="Acura Automobiles Email Preferences" class="m_text heading-1 is-on-light">Email Preferences</h1>
+            </div>
+
+            <div class="m_white_card">
+                <div class="m_inner_card manage-subscription">
+                    <div class="m_container_email">
+                        <p class="preference-copy bodycopy-1">To manage your email preferences or unsubscribe,  please enter your email address below.</p>
+                    </div>
+
+                    <form id="unsubscribe_form" method="post" action="https://function-a12247n1.us01.treasuredata-apps.com/submit_acura">
+                        <div class="m_container_email">
+                            <label aria-hidden="true" for="email">Email Address</label>
+                            <div class="spacer"></div>
+                        </div>
+                        <div class="m_container_email">
+                            <div class="m_form_group">
+                                <input aria-label="Enter Email Address" id="email" name="email" type="email">
+                            </div>
+                            <button id="submit_email" aria-label="Submit to change email preferences" class="m_cta is-on-light  is-secondary button-submit" type="submit">SUBMIT</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
+    </div>
 </body>
 </html>
