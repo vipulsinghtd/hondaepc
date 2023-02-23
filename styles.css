@@ -117,3 +117,52 @@
         @font-face{font-family:AvenirNext-DemiBold;src:url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/aad99a1f-7917-4dd6-bbb5-b07cedbff64f.woff2") format("woff2"),url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/91b50bbb-9aa1-4d54-9159-ec6f19d14a7c.woff") format("woff");}
         @font-face{font-family:AvenirNext-Bold;src:url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/14c73713-e4df-4dba-933b-057feeac8dd1.woff2") format("woff2"),url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/b8e906a1-f5e8-4bf1-8e80-82c646ca4d5f.woff") format("woff");}
         @font-face{font-family:AvenirNext-Thin;src:url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/0b79d335-83f4-416a-b9b7-0e81d6258db7.woff2") format("woff2"),url("https://automobiles.honda.com/Areas/Honda_Automobiles/fonts/ab86f3dc-10a7-4bf1-bab8-e84f506f6d45.woff") format("woff");}
+
+/* Toggle Button */
+.cm-toggle {
+	-webkit-appearance: none;
+	-webkit-tap-highlight-color: transparent;
+	position: relative;
+	border: 0;
+	outline: 0;
+	cursor: pointer;
+	margin: 10px;
+}
+
+
+/* To create surface of toggle button */
+.cm-toggle:after {
+	content: '';
+	width: 60px;
+	height: 28px;
+	display: inline-block;
+	background: rgba(196, 195, 195, 0.55);
+	border-radius: 18px;
+	clear: both;
+}
+
+
+/* Contents before checkbox to create toggle handle */
+.cm-toggle:before {
+	content: '';
+	width: 32px;
+	height: 32px;
+	display: block;
+	position: absolute;
+	left: 0;
+	top: -3px;
+	border-radius: 50%;
+	background: rgb(255, 255, 255);
+	box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+
+
+/* Shift the handle to left on check event */
+.cm-toggle:checked:before {
+	left: 32px;
+	box-shadow: -1px 1px 3px rgba(0, 0, 0, 0.6);
+}
+/* Background color when toggle button will be active */
+.cm-toggle:checked:after {
+	background: #16a085;
+}
